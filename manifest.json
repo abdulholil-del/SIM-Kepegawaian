@@ -1,0 +1,17 @@
+{
+  "name": "SIM Kepegawaian SMKN 3 Tangerang",
+  "short_name": "SIMPEG SMKN 3",
+  "description": "Sistem Informasi Manajemen Kepegawaian SMKN 3 Tangerang",
+  "lang": "id",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#F4F8FB",
+  "theme_color": "#083A75",
+  "icons": [
+    { "src": "./assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SIM Kepegawaian SMKN 3 Tangerang</title>
+  <meta name="description" content="Portal resmi Sistem Informasi Manajemen Kepegawaian SMKN 3 Tangerang">
+  <meta name="theme-color" content="#083A75">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="SIMPEG SMKN 3">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+
+<!-- Sprite ikon (inline, tidak butuh internet) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+
+    <symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+    <symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+    <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></symbol>
+    <symbol id="i-usercog" viewBox="0 0 24 24"><circle cx="18" cy="15" r="3"/><circle cx="9" cy="7" r="4"/><path d="M10 15H6a4 4 0 0 0-4 4v2"/><path d="m21.7 16.4-.9-.3"/><path d="m15.2 13.9-.9-.3"/><path d="m16.6 18.7.3-.9"/><path d="m19.1 12.2.3-.9"/><path d="m19.6 18.7-.4-1"/><path d="m16.8 12.3-.4-1"/><path d="m14.3 16.6 1-.4"/><path d="m20.7 13.8 1-.4"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+    <symbol id="i-lockkey" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></symbol>
+    <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M12 20h.01"/><path d="M8.5 16.43a5 5 0 0 1 7 0"/><path d="M5 12.86a10 10 0 0 1 5.17-2.69"/><path d="M19 12.86a10 10 0 0 0-2.01-1.55"/><path d="M2 8.82a15 15 0 0 1 4.17-2.65"/><path d="M10.66 5c4.01-.36 8.14.9 11.34 3.76"/><path d="m2 2 20 20"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ SPLASH ============ -->
+<div id="splash" class="splash" role="status" aria-label="Memuat aplikasi">
+  <img src="./assets/logo-smkn3.png" alt="" width="84" height="84">
+  <div class="splash-bar"><span></span></div>
+</div>
+
+<!-- ============ VIEW: LOGIN ============ -->
+<main id="view-login" class="login" hidden>
+
+  <aside class="login-hero">
+    <div class="hero-dots" aria-hidden="true"></div>
+
+    <div class="brand-pill">
+      <span class="brand-logo"><img src="./assets/logo-smkn3.png" alt="Logo SMKN 3 Tangerang" width="42" height="42"></span>
+      <span class="brand-sep"></span>
+      <span class="brand-text"><b>SMKN 3 TANGERANG</b><small>PORTAL KEPEGAWAIAN RESMI</small></span>
+    </div>
+
+    <div class="hero-main">
+      <span class="hero-badge"><i></i>Sistem Informasi Manajemen Terpadu</span>
+      <h1>Selamat Datang di<br><span class="hl">SIM Kepegawaian</span><small>SMKN 3 Tangerang</small></h1>
+      <p>Sistem Pengelolaan Administrasi Kepegawaian Terpadu, Presensi Mandiri, Dokumen Digital, dan Penilaian Kinerja Guru &amp; Tenaga Kependidikan berbasis cloud modern.</p>
+
+      <div class="hero-features">
+        <div class="feat"><span class="feat-ic feat-green"><svg class="ic"><use href="#i-pin"/></svg></span><b>Presensi Realtime</b><small>Presensi radius Geofence &amp; riwayat akurat</small></div>
+        <div class="feat"><span class="feat-ic feat-gold"><svg class="ic"><use href="#i-file"/></svg></span><b>Layanan Cuti &amp; KGB</b><small>Pengajuan kenaikan pangkat &amp; berkas digital</small></div>
+        <div class="feat"><span class="feat-ic feat-blue"><svg class="ic"><use href="#i-qr"/></svg></span><b>Arsip QR-Code</b><small>Validasi SK tugas &amp; sertifikat instan</small></div>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <span>Versi 1.0 · PWA Google Apps Script &amp; Sheets Architecture</span>
+      <button type="button" id="serverStatus" class="status status-wait" title="Klik untuk memeriksa ulang koneksi server">
+        <i></i><span id="serverStatusText">Menghubungkan ke server…</span>
+      </button>
+    </div>
+  </aside>
+
+  <section class="login-panel">
+    <div class="panel-top">
+      <button type="button" id="btnInstall" class="chip-btn" hidden><svg class="ic"><use href="#i-download"/></svg>Pasang Aplikasi</button>
+      <span class="spacer"></span>
+      <button type="button" id="btnBantuan" class="chip-btn"><svg class="ic gold"><use href="#i-help"/></svg>Panduan &amp; Bantuan</button>
+    </div>
+
+    <div class="login-card">
+      <div class="card-logo"><img src="./assets/logo-smkn3.png" alt="Logo SMKN 3 Tangerang" width="56" height="56"></div>
+      <h2 id="loginTitle">Portal Masuk Pegawai</h2>
+      <p class="card-sub">SMKN 3 TANGERANG</p>
+      <div class="card-line" aria-hidden="true"></div>
+
+      <div id="cfgWarn" class="note note-danger" role="alert" hidden>
+        <svg class="ic"><use href="#i-alert"/></svg>
+        <div><b>Backend belum disambungkan.</b> Isi <code>GAS_URL</code> di berkas <code>js/config.js</code> dengan URL Web App Apps Script (berakhiran <code>/exec</code>).</div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Jenis akun">
+        <button type="button" role="tab" id="tab-pegawai" class="tab active" data-portal="pegawai" aria-selected="true">Pegawai (Guru / Tendik)</button>
+        <button type="button" role="tab" id="tab-admin" class="tab" data-portal="admin" aria-selected="false">Administrator / TU</button>
+      </div>
+
+      <form id="loginForm" novalidate autocomplete="on">
+        <div id="loginAlert" class="note note-danger" role="alert" aria-live="assertive" hidden>
+          <svg class="ic"><use href="#i-alert"/></svg><div id="loginAlertText"></div>
+        </div>
+
+        <label class="lbl" for="username"><span id="lblUser">NIP / NUPTK / Username</span> <em>*</em></label>
+        <div class="field">
+          <svg class="ic fic"><use href="#i-user"/></svg>
+          <input id="username" name="username" type="text" inputmode="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="64" placeholder="Masukkan NIP, NUPTK, atau NIK" required>
+        </div>
+
+        <label class="lbl" for="password">Kata Sandi <em>*</em></label>
+        <div class="field">
+          <svg class="ic fic"><use href="#i-lock"/></svg>
+          <input id="password" name="password" type="password" autocomplete="current-password" maxlength="128" placeholder="Masukkan kata sandi" required>
+          <button type="button" id="togglePw" class="eye" aria-label="Tampilkan kata sandi" aria-pressed="false">
+            <svg class="ic"><use href="#i-eye"/></svg>
+          </button>
+        </div>
+        <p id="capsWarn" class="caps" hidden>Caps Lock sedang aktif</p>
+
+        <div class="row-between">
+          <label class="chk"><input type="checkbox" id="ingat"><span></span>Ingat sesi saya (8 Jam)</label>
+          <button type="button" id="btnLupa" class="link">Lupa Kata Sandi?</button>
+        </div>
+
+        <button type="submit" id="btnMasuk" class="btn-primary">
+          <span class="btn-label">Masuk ke Sistem</span>
+          <svg class="ic btn-arrow"><use href="#i-arrow"/></svg>
+          <span class="btn-spin" aria-hidden="true"></span>
+        </button>
+        <p id="slowNote" class="slow" hidden>Menghubungkan ke server… koneksi pertama bisa memakan 5–10 detik.</p>
+      </form>
+
+      <hr class="sep">
+
+      <div class="note note-warn" id="infoBaru">
+        <svg class="ic"><use href="#i-info"/></svg>
+        <div><b>Info Pegawai Baru:</b> Login pertama kali menggunakan NIP sebagai username dan password standar. Harap segera perbarui kata sandi mandiri demi keamanan akun.</div>
+      </div>
+
+      <p class="help-line">Kendala akun? Hubungi <button type="button" class="link" id="btnKontak">Subbag Tata Usaha / Operator Kepegawaian</button></p>
+    </div>
+
+    <p class="copy">© 2026 <b>SMKN 3 Tangerang</b>. Hak Cipta Dilindungi.</p>
+  </section>
+</main>
+
+<!-- ============ VIEW: GANTI KATA SANDI (wajib saat login pertama) ============ -->
+<main id="view-ganti" class="center-view" hidden>
+  <div class="login-card narrow">
+    <div class="card-logo"><svg class="ic xl"><use href="#i-shield"/></svg></div>
+    <h2>Buat Kata Sandi Baru</h2>
+    <p class="card-sub">DEMI KEAMANAN AKUN ANDA</p>
+    <div class="card-line" aria-hidden="true"></div>
+    <p class="muted center">Anda masuk menggunakan kata sandi sementara. Silakan buat kata sandi pribadi sebelum melanjutkan.</p>
+
+    <form id="gantiForm" novalidate>
+      <div id="gantiAlert" class="note note-danger" role="alert" hidden>
+        <svg class="ic"><use href="#i-alert"/></svg><div id="gantiAlertText"></div>
+      </div>
+
+      <label class="lbl" for="pwLama">Kata Sandi Sementara <em>*</em></label>
+      <div class="field"><svg class="ic fic"><use href="#i-lock"/></svg>
+        <input id="pwLama" type="password" autocomplete="current-password" maxlength="128" placeholder="Kata sandi dari administrator" required></div>
+
+      <label class="lbl" for="pwBaru">Kata Sandi Baru <em>*</em></label>
+      <div class="field"><svg class="ic fic"><use href="#i-lock"/></svg>
+        <input id="pwBaru" type="password" autocomplete="new-password" maxlength="64" placeholder="Minimal 8 karakter, huruf &amp; angka" required>
+        <button type="button" class="eye" data-eye="pwBaru" aria-label="Tampilkan kata sandi"><svg class="ic"><use href="#i-eye"/></svg></button></div>
+      <div class="meter" aria-hidden="true"><span id="meterBar"></span></div>
+      <p id="meterText" class="meter-text">Gunakan kombinasi huruf dan angka.</p>
+
+      <label class="lbl" for="pwKonf">Ulangi Kata Sandi Baru <em>*</em></label>
+      <div class="field"><svg class="ic fic"><use href="#i-lock"/></svg>
+        <input id="pwKonf" type="password" autocomplete="new-password" maxlength="64" placeholder="Ketik ulang kata sandi baru" required></div>
+
+      <button type="submit" id="btnGanti" class="btn-primary">
+        <span class="btn-label">Simpan &amp; Lanjutkan</span>
+        <svg class="ic btn-arrow"><use href="#i-arrow"/></svg>
+        <span class="btn-spin" aria-hidden="true"></span>
+      </button>
+    </form>
+    <p class="help-line"><button type="button" class="link" id="btnBatalGanti">Keluar</button></p>
+  </div>
+</main>
+
+<!-- ============ VIEW: APLIKASI (kerangka: sidebar + header + halaman) ============ -->
+<div id="view-app" class="app" hidden>
+  <aside id="sidebar" class="sidebar" aria-label="Navigasi utama">
+    <div class="sb-brand">
+      <span class="sb-logo"><img src="./assets/logo-smkn3.png" alt="" width="42" height="42"></span>
+      <div class="sb-brand-text"><b>SIM KEPEGAWAIAN</b><span>SMKN 3 TANGERANG</span><small>Sistem Informasi Manajemen ASN</small></div>
+      <button type="button" id="btnTutupMenu" class="icon-btn sb-close" aria-label="Tutup menu"><svg class="ic"><use href="#i-x"/></svg></button>
+    </div>
+    <nav id="sbNav" class="sb-nav"></nav>
+    <div class="sb-user">
+      <span class="avatar" id="sbAvatar">?</span>
+      <div class="sb-user-text"><b id="sbNama">—</b><span class="online"><i></i>Online · <span id="sbPeran">—</span></span></div>
+    </div>
+    <div class="sb-ver">SIMPEG v1.0 • 2026 <span>SMKN 3 TNG</span></div>
+  </aside>
+  <div id="sbScrim" class="sb-scrim"></div>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button type="button" id="btnMenu" class="icon-btn menu-btn" aria-label="Buka menu"><svg class="ic"><use href="#i-menu"/></svg></button>
+      <div class="tb-title"><b id="tbTitle">Dashboard</b><span id="tbSub">—</span></div>
+      <span class="spacer"></span>
+      <span id="apiPill" class="pill pill-wait" title="Status koneksi ke server"><i></i><span id="apiPillText">Menghubungkan…</span></span>
+      <div class="pop-wrap">
+        <button type="button" id="btnBell" class="icon-btn" aria-label="Notifikasi" aria-haspopup="true" aria-expanded="false">
+          <svg class="ic"><use href="#i-bell"/></svg><em id="bellDot" class="bell-dot" hidden>0</em>
+        </button>
+        <div id="notifPop" class="popover notif-pop" hidden></div>
+      </div>
+      <div class="pop-wrap">
+        <button type="button" id="btnProfil" class="profile-chip" aria-haspopup="true" aria-expanded="false">
+          <span class="avatar" id="tbAvatar">?</span>
+          <span class="pc-text"><b id="tbNama">—</b><small id="tbNip">—</small></span>
+          <svg class="ic pc-chev"><use href="#i-chevron"/></svg>
+        </button>
+        <div id="profilPop" class="popover menu-pop" hidden></div>
+      </div>
+    </header>
+    <main id="page" class="page" tabindex="-1" aria-live="polite"></main>
+  </div>
+
+  <nav id="bottomNav" class="bottom-nav" aria-label="Navigasi cepat">
+    <button type="button" data-bn="dashboard" class="active"><svg class="ic"><use href="#i-dashboard"/></svg><span>Beranda</span></button>
+    <button type="button" data-bn="notif"><svg class="ic"><use href="#i-bell"/></svg><span>Notifikasi</span><em id="bnDot" class="bell-dot" hidden>0</em></button>
+    <button type="button" data-bn="menu"><svg class="ic"><use href="#i-grid"/></svg><span>Menu</span></button>
+    <button type="button" data-bn="akun"><svg class="ic"><use href="#i-user"/></svg><span>Akun</span></button>
+  </nav>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="modalRoot"></div>
+
+<script src="./js/config.js"></script>
+<script src="./js/ui.js"></script>
+<script src="./js/api.js"></script>
+<script src="./js/login.js"></script>
+<script src="./js/menu.js"></script>
+<script src="./js/charts.js"></script>
+<script src="./js/dashboard.js"></script>
+<script src="./js/shell.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>
