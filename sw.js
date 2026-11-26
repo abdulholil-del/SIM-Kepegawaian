@@ -1,11 +1,13 @@
 /* Service Worker — SIM Kepegawaian SMKN 3 Tangerang
    Naikkan nomor VERSI setiap kali Anda mengubah berkas aplikasi. */
-const VERSI = 'simpeg-v1.1.0';
+const VERSI = 'simpeg-v1.2.0';
 const SHELL = [
   './', './index.html', './manifest.json',
-  './css/style.css', './css/app.css',
+  './css/style.css', './css/app.css', './css/pegawai.css',
   './js/config.js', './js/ui.js', './js/api.js', './js/login.js',
-  './js/menu.js', './js/charts.js', './js/dashboard.js', './js/shell.js', './js/app.js',
+  './js/menu.js', './js/charts.js', './js/dashboard.js',
+  './js/pegawai-data.js', './js/pegawai-list.js', './js/pegawai-detail.js', './js/pegawai-form.js', './js/pegawai-io.js',
+  './js/shell.js', './js/app.js',
   './assets/logo-smkn3.png', './assets/icon-192.png', './assets/favicon-32.png'
 ];
 

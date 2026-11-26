@@ -2,9 +2,9 @@
 
 Progressive Web App (PWA) — frontend statis (HTML/CSS/JS) dengan backend Google Apps Script + Google Sheets.
 
-**Status: Langkah 2 — Kerangka aplikasi (sidebar, header, notifikasi) & Dashboard Super Admin.**
+**Status: Langkah 3 — Modul Data Guru & Tendik** (daftar, detail, tambah/ubah, status, impor/ekspor Excel, foto).
 
-Langkah 1 (Login) sudah termasuk.
+Langkah 1 (Login) dan Langkah 2 (Kerangka & Dashboard Super Admin) sudah termasuk.
 
 ## Struktur folder
 
@@ -21,6 +21,9 @@ sim-kepegawaian-smkn3/        ← folder ini = root repository (tempat git init)
 │   ├── ui.js  api.js  login.js
 │   ├── menu.js               ← daftar menu per peran + registri halaman
 │   ├── charts.js  dashboard.js  shell.js
+│   ├── pegawai-data.js  pegawai-list.js  pegawai-detail.js
+│   ├── pegawai-form.js  pegawai-io.js      ← modul Data Guru & Tendik
+│   ├── vendor/xlsx.full.min.js             ← SheetJS (Apache-2.0), dimuat saat impor/ekspor
 │   └── app.js
 └── assets/                   ← logo & ikon PWA
 ```

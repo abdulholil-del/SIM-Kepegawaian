@@ -60,6 +60,63 @@ const UI = {
     return { masehi: masehi, hijriah: hijriah };
   },
 
+
+  // ---- Format tanggal & nomor ----
+  _BLN: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+  tgl(iso) {            // "2026-11-25" → "25 Nov 2026"
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ''));
+    return m ? (+m[3]) + ' ' + UI._BLN[+m[2] - 1].substring(0, 3) + ' ' + m[1] : (iso || '—');
+  },
+  tglPanjang(iso) {     // → "25 November 2026"
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso || ''));
+    return m ? (+m[3]) + ' ' + UI._BLN[+m[2] - 1] + ' ' + m[1] : (iso || '—');
+  },
+  nip(s) {              // 18 digit → "19740512 199903 2 003"
+    s = String(s || '').replace(/\D/g, '');
+    return s.length === 18 ? s.slice(0, 8) + ' ' + s.slice(8, 14) + ' ' + s.slice(14, 15) + ' ' + s.slice(15) : s;
+  },
+  debounce(fn, ms) {
+    let t;
+    return function () { const a = arguments, c = this; clearTimeout(t); t = setTimeout(function () { fn.apply(c, a); }, ms); };
+  },
+  // Selisih tahun/bulan penuh antara dua tanggal ISO → { th, bl }
+  selisihTB(dari, ke) {
+    const a = /^(\d{4})-(\d{2})-(\d{2})/.exec(dari || ''), b = /^(\d{4})-(\d{2})-(\d{2})/.exec(ke || '');
+    if (!a || !b) return null;
+    let bulan = (+b[1] - +a[1]) * 12 + (+b[2] - +a[2]);
+    if (+b[3] < +a[3]) bulan--;
+    return { th: Math.floor(bulan / 12), bl: ((bulan % 12) + 12) % 12, totalBulan: bulan };
+  },
+  hariIniISO() { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta' }).format(new Date()); },
+  tambahTahun(iso, n) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+    return m ? (+m[1] + n) + '-' + m[2] + '-' + m[3] : '';
+  },
+
+  // Unduh berkas dari Blob / byte
+  unduh(data, nama, mime) {
+    const blob = data instanceof Blob ? data : new Blob([data], { type: mime || 'application/octet-stream' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = nama;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+  },
+
+  // Dialog konfirmasi → Promise<boolean>
+  konfirmasi(o) {
+    return new Promise(function (resolve) {
+      UI.modal({
+        title: o.judul || 'Konfirmasi',
+        body: '<p>' + UI.esc(o.teks || '') + '</p>' + (o.html || ''),
+        actions: [
+          { label: o.tidak || 'Batal', kind: 'ghost', onClick: function (close) { resolve(false); close(); } },
+          { label: o.ya || 'Ya', kind: o.bahaya ? 'danger' : '', onClick: function (close) { resolve(true); close(); } }
+        ],
+        onClose: function () { resolve(false); }
+      });
+    });
+  },
+
   _toastTimer: null,
   toast(msg, type) {
     const el = UI.$('toast');
@@ -81,7 +138,7 @@ const UI = {
     const bg = document.createElement('div');
     bg.className = 'modal-bg';
     bg.innerHTML =
-      '<div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">' +
+      '<div class="modal' + (opt.kelas ? ' ' + opt.kelas : '') + '" role="dialog" aria-modal="true" aria-labelledby="mTitle">' +
       '<div class="modal-head"><h3 id="mTitle">' + UI.esc(opt.title) + '</h3>' +
       '<button type="button" class="modal-x" aria-label="Tutup"><svg class="ic"><use href="#i-x"/></svg></button></div>' +
       '<div class="modal-body">' + (opt.body || '') + '</div>' +
@@ -103,7 +160,7 @@ const UI = {
     (opt.actions || []).forEach(function (a) {
       const b = document.createElement('button');
       b.type = 'button';
-      b.className = a.kind === 'ghost' ? 'chip-btn' : 'btn-secondary';
+      b.className = a.kind === 'ghost' ? 'chip-btn' : (a.kind === 'danger' ? 'btn-secondary btn-danger' : 'btn-secondary');
       b.textContent = a.label;
       b.addEventListener('click', function () { a.onClick ? a.onClick(close, b) : close(); });
       foot.appendChild(b);

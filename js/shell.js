@@ -5,6 +5,7 @@ const Shell = {
   user: null,
   aktif: false,
   rute: '',
+  param: '',
   _terikat: false,
   _timerBell: null,
   _timerPing: null,
@@ -18,7 +19,7 @@ const Shell = {
     App.show('app');
     Shell.bindSekali();
 
-    if (!/^#\/[a-z0-9-]+$/.test(location.hash)) history.replaceState(null, '', '#/dashboard');
+    if (!/^#\/[a-z0-9-]+(\/[A-Za-z0-9_-]+)?$/.test(location.hash)) history.replaceState(null, '', '#/dashboard');
     Shell.route();
 
     Shell.bootstrap();
@@ -37,6 +38,8 @@ const Shell = {
     Shell.aktif = false;
     Shell.user = null;
     Shell.rute = '';
+    Shell.param = '';
+    if (typeof PegList !== 'undefined') PegList.reset();
     clearInterval(Shell._timerBell); clearInterval(Shell._timerPing);
     Shell.tutupPop();
     Shell.tutupMenu();
@@ -72,8 +75,9 @@ const Shell = {
 
   route() {
     if (!Shell.aktif) return;
-    const m = location.hash.match(/^#\/([a-z0-9-]+)$/);
+    const m = location.hash.match(/^#\/([a-z0-9-]+)(?:\/([A-Za-z0-9_-]+))?$/);
     const id = m ? m[1] : 'dashboard';
+    const param = m && m[2] ? m[2] : '';
     const item = Menu.cari(id, Shell.user.role);
     if (!item) {                                   // tidak dikenal / bukan hak peran ini
       if (id !== 'dashboard') UI.toast('Halaman tidak tersedia untuk akun Anda.');
@@ -81,6 +85,7 @@ const Shell = {
       return Shell.route();
     }
     Shell.rute = item.id;
+    Shell.param = param;
     document.querySelectorAll('.sb-item').forEach(function (a) {
       const on = a.dataset.id === item.id;
       a.classList.toggle('active', on);
@@ -97,7 +102,7 @@ const Shell = {
     const box = UI.$('page');
     Shell.tutupMenu(); Shell.tutupPop();
     window.scrollTo(0, 0);
-    if (item.ready && Pages[item.id]) Pages[item.id](box, Shell.user);
+    if (item.ready && Pages[item.id]) Pages[item.id](box, Shell.user, param);
     else Pages.segera(box, Shell.user, item);
   },
 
@@ -183,7 +188,7 @@ const Shell = {
       Shell.setBell(sisa);
       Api.post('notifBaca', { ids: [id] });
     }
-    if (/^#\/[a-z0-9-]+$/.test(tautan)) { Shell.tutupPop(); location.hash = tautan; }
+    if (/^#\/[a-z0-9-]+(\/[A-Za-z0-9_-]+)?$/.test(tautan)) { Shell.tutupPop(); location.hash = tautan; }
   },
 
   async tandaiSemua() {
