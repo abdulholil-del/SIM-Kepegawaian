@@ -40,6 +40,7 @@ const Shell = {
     Shell.rute = '';
     Shell.param = '';
     if (typeof PegList !== 'undefined') PegList.reset();
+    if (typeof RiwayatDUK !== 'undefined') RiwayatDUK.reset();
     clearInterval(Shell._timerBell); clearInterval(Shell._timerPing);
     Shell.tutupPop();
     Shell.tutupMenu();

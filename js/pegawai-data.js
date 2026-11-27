@@ -99,6 +99,24 @@ const PegData = {
     return { skor: Math.round((1 - kurang.length / total) * 100), kurang: kurang };
   },
 
+  // ---------- Golongan & kenaikan pangkat ----------
+  PENDIDIKAN_RANK: { 'S3': 7, 'S2': 6, 'S1': 5, 'D4': 5, 'D3': 4, 'D2': 3, 'D1': 2, 'SMA/SMK Sederajat': 1 },
+  golIdx(g) { const l = (PegData.ref && PegData.ref.golongan_ruang) || []; return l.indexOf(g); },
+  // Golongan PNS berikutnya (I/a … IV/e). PPPK dan golongan tertinggi → ''
+  golBerikut(g) {
+    const l = (PegData.ref && PegData.ref.golongan_ruang) || [];
+    const i = l.indexOf(g);
+    return i >= 0 && i < 16 ? l[i + 1] : '';
+  },
+  // Periode kenaikan pangkat reguler (1 April / 1 Oktober) pada/setelah tanggal tertentu
+  periodeKP(iso) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    if (!m) return '';
+    const y = +m[1];
+    return [y + '-04-01', y + '-10-01', (y + 1) + '-04-01'].filter(function (c) { return c >= iso; })[0];
+  },
+  mkTeks(sel) { return sel ? sel.th + ' thn ' + sel.bl + ' bln' : '—'; },
+
   // ---------- Karier & pensiun (perkiraan) ----------
   sisaWaktu(iso) {
     if (!iso) return null;
@@ -141,6 +159,27 @@ const PegData = {
       k.pensiun = { batas: batas, tmt: tmt, bup: bup };
     }
     return k;
+  },
+
+
+  // ---------- Urutan golongan, pendidikan, periode kenaikan pangkat ----------
+  idxGol(g) { const l = (PegData.ref && PegData.ref.golongan_ruang) || []; return l.indexOf(g); },
+  golBerikut(g) {
+    const l = (PegData.ref && PegData.ref.golongan_ruang) || [], i = l.indexOf(g);
+    if (i < 0 || !l[i + 1]) return '';
+    const pns = /^(I|II|III|IV)\//.test(g), nxt = l[i + 1];
+    return pns && !/^(I|II|III|IV)\//.test(nxt) ? '' : nxt;
+  },
+  rankPendidikan(p) { return { 'S3': 7, 'S2': 6, 'S1': 5, 'D4': 5, 'D3': 4, 'D2': 3, 'D1': 2, 'SMA/SMK Sederajat': 1 }[p] || 0; },
+  // Periode kenaikan pangkat reguler: 1 April atau 1 Oktober (pertama yang jatuh pada/setelah tanggal)
+  periodeKP(iso) {
+    const y = +String(iso).slice(0, 4);
+    return [y + '-04-01', y + '-10-01', (y + 1) + '-04-01'].filter(function (t) { return t >= iso; })[0];
+  },
+  // Rentang usia bertahap: "27 thn 08 bln"
+  masa(dari, ke) {
+    const s = UI.selisihTB(dari, ke || UI.hariIniISO());
+    return s ? { th: s.th, bl: s.bl, teks: s.th + ' thn ' + ('0' + s.bl).slice(-2) + ' bln' } : null;
   },
 
   // ---------- Foto ----------

@@ -12,7 +12,7 @@ const Menu = {
     { id: 'dashboard', label: 'Dashboard Utama', labelUser: 'Beranda', icon: 'dashboard', grup: 'DASHBOARD', roles: ['super_admin', 'admin', 'user'], ready: true },
 
     { id: 'data-pegawai', label: 'Data Guru & Tendik', icon: 'users', grup: 'DATA MASTER & PEGAWAI', roles: ['super_admin', 'admin'], ready: true },
-    { id: 'riwayat', label: 'Riwayat Kepangkatan & DUK', icon: 'award', grup: 'DATA MASTER & PEGAWAI', roles: ['super_admin', 'admin'] },
+    { id: 'riwayat', label: 'Riwayat Kepangkatan & DUK', icon: 'award', grup: 'DATA MASTER & PEGAWAI', roles: ['super_admin', 'admin'], ready: true },
     { id: 'dokumen', label: 'Dokumen & Arsip Digital', icon: 'folder', grup: 'DATA MASTER & PEGAWAI', roles: ['super_admin', 'admin'] },
 
     { id: 'presensi', label: 'Rekap Presensi & Geofence', icon: 'pin', grup: 'PRESENSI & JADWAL', roles: ['super_admin', 'admin'] },

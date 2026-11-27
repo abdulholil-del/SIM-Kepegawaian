@@ -5,13 +5,15 @@ const PegDetail = {
   id: '',
   cur: null,          // { p, kel, kurang, punya_akun }
   tab: 'identitas',
+  tabAwal: '',         // diisi halaman lain agar detail langsung membuka tab tertentu
   tampilNik: false,
   box: null,
 
   async render(box, user, id) {
     PegDetail.box = box;
     PegDetail.id = id;
-    PegDetail.tab = 'identitas';
+    PegDetail.tab = PegDetail.tabAwal || 'identitas';
+    PegDetail.tabAwal = '';
     PegDetail.tampilNik = false;
     PegDetail.cur = null;
     box.innerHTML = PegDetail.skeleton();
@@ -103,7 +105,7 @@ const PegDetail = {
     // Tab
     const tabs = [['identitas', 'Identitas & Biodata', 'user'], ['kepegawaian', 'Kepegawaian & Jabatan', 'briefcase'], ['riwayat', 'Riwayat Pangkat & KGB', 'award'], ['dokumen', 'Dokumen & Arsip', 'folder']];
     h += '<nav class="ptabs" role="tablist" aria-label="Bagian profil">' + tabs.map(function (t) {
-      const soon = t[0] === 'riwayat' || t[0] === 'dokumen';
+      const soon = t[0] === 'dokumen';
       return '<button type="button" role="tab" class="ptab' + (PegDetail.tab === t[0] ? ' on' : '') + '" data-tab="' + t[0] + '" aria-selected="' + (PegDetail.tab === t[0]) + '">' + UI.ic(t[2]) + t[1] + (soon ? '<em>segera</em>' : '') + '</button>';
     }).join('') + '</nav>';
 
@@ -173,10 +175,11 @@ const PegDetail = {
         kv('No. Karpeg', p.no_karpeg, { mono: true }) + kv('No. Karis/Karsu', p.no_karis_karsu, { mono: true }) + '</div></section>';
       h += PegDetail.kartu('Pendidikan Terakhir', 'Riwayat pendidikan lengkap tersedia pada modul berikutnya', 'grad', 't-green',
         '<div class="kvg">' + kv('Jenjang', p.pendidikan_terakhir) + kv('Tahun Lulus', p.tahun_lulus) + kv('Jurusan / Program Studi', p.jurusan) + kv('Institusi', p.institusi) + '</div>');
+    } else if (PegDetail.tab === 'riwayat') {
+      PegRiwayat.render(el);
+      return;
     } else {
-      const j = PegDetail.tab === 'riwayat' ? ['Riwayat Pangkat & KGB', 'award', 'Riwayat kenaikan pangkat, kenaikan gaji berkala, dan SK terkait akan tersedia pada modul Riwayat Kepangkatan & DUK.'] :
-        ['Dokumen & Arsip', 'folder', 'Unggah dan verifikasi SK CPNS/PNS, ijazah, KTP, dan berkas lain akan tersedia pada modul Dokumen & Arsip Digital.'];
-      h += '<section class="card soon panel-center" style="margin:0;max-width:none"><span class="ch-ic t-gold">' + UI.ic(j[1]) + '</span><h2>' + j[0] + '</h2><p>' + j[2] + '</p><span class="soon-tag">SEGERA</span></section>';
+      h += '<section class="card soon panel-center" style="margin:0;max-width:none"><span class="ch-ic t-gold">' + UI.ic('folder') + '</span><h2>Dokumen &amp; Arsip</h2><p>Unggah dan verifikasi SK CPNS/PNS, ijazah, KTP, dan berkas lain akan tersedia pada modul Dokumen &amp; Arsip Digital.</p><span class="soon-tag">SEGERA</span></section>';
     }
     el.innerHTML = h;
   },
@@ -217,6 +220,7 @@ const PegDetail = {
     }
     h += k.pensiun ? blok('Batas Usia Pensiun (BUP ' + k.pensiun.bup + ' th)', k.pensiun.batas, 'tanggal lahir · perkiraan TMT pensiun ' + UI.tgl(k.pensiun.tmt), '') : blok('Batas Usia Pensiun', '', '', 'Tanggal lahir belum diisi');
     h += '<p class="fine">Perkiraan ini bukan keputusan resmi; BUP guru dan tendik dapat diatur di Pengaturan Sekolah.</p></section>';
+    if (PegDetail.tab === 'riwayat') h += PegRiwayat.sisiHTML();
 
     h += PegDetail.kartu('Informasi Data', '', 'info', 't-gray',
       '<div class="kvg one">' + PegDetail.kv('Status data', PegData.statusAktifInfo(p.status_aktif)[0]) +
@@ -235,6 +239,7 @@ const PegDetail = {
         PegDetail.tab = b.dataset.tab;
         document.querySelectorAll('.ptab').forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', String(x === b)); });
         PegDetail.gambarTab();
+        PegDetail.gambarSisi();
       });
     });
     $('btnEdit').addEventListener('click', PegDetail.edit);

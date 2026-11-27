@@ -87,10 +87,27 @@ const UI = {
     if (+b[3] < +a[3]) bulan--;
     return { th: Math.floor(bulan / 12), bl: ((bulan % 12) + 12) % 12, totalBulan: bulan };
   },
+  rupiah(v) {           // "5120400" → "Rp 5.120.400"
+    const d = String(v == null ? '' : v).replace(/\D/g, '');
+    return d ? 'Rp ' + d.replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '';
+  },
   hariIniISO() { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta' }).format(new Date()); },
   tambahTahun(iso, n) {
     const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
     return m ? (+m[1] + n) + '-' + m[2] + '-' + m[3] : '';
+  },
+
+
+  // "5120400" → "Rp 5.120.400"
+  rp(n) {
+    const d = String(n == null ? '' : n).replace(/\D/g, '');
+    return d ? 'Rp ' + d.replace(/\B(?=(\d{3})+(?!\d))/g, '.') : '—';
+  },
+  tambahHari(iso, n) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso || '');
+    if (!m) return '';
+    const d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3] + n));
+    return d.getUTCFullYear() + '-' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '-' + ('0' + d.getUTCDate()).slice(-2);
   },
 
   // Unduh berkas dari Blob / byte
